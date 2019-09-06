@@ -36,7 +36,7 @@ app.use('/api/exercises', require('./routes/api/exercises'));
 
 //Set state folder
 if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('/frontend/build'));
+  app.use(express.static(path.join('frontend/build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname), 'frontend', 'build', )
   })
