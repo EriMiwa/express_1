@@ -14,6 +14,14 @@ app.get('/api', (req, res) =>
 //   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 // );
 
+app.post('/api/auth', (req, res) => {
+  const {userName, password } = req.body;
+  const admin = { userName: 'admin', password: 'adminadmin'}
+  if (userName === admin.userName && passowrd === admin.password) {
+    res.send({auth: true})
+  }
+  res.send({auth: false})
+})
 
 //Set Static Folder
 app.use(express.json());
@@ -40,7 +48,6 @@ if(process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html')); // relative path
   });
-
 }
 
 
